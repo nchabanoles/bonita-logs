@@ -1,0 +1,81 @@
+{
+  "designerVersion" : "1.7.49",
+  "id" : "logs",
+  "name" : "logs",
+  "lastUpdate" : 1528981034053,
+  "rows" : [ [ {
+    "type" : "component",
+    "dimension" : {
+      "xs" : 12,
+      "sm" : 12,
+      "md" : 12,
+      "lg" : 12
+    },
+    "propertyValues" : {
+      "cssClasses" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "hidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "headers" : {
+        "type" : "constant",
+        "value" : [ "year", "month", "tenantId", "userId", "productVersion", "threadNumber", "actionType", "rawMessage" ]
+      },
+      "type" : {
+        "type" : "constant",
+        "value" : "Bonita API"
+      },
+      "apiUrl" : {
+        "type" : "constant",
+        "value" : "../API/extension/logs"
+      },
+      "params" : {
+        "type" : "constant"
+      },
+      "content" : {
+        "type" : "constant"
+      },
+      "columnsKey" : {
+        "type" : "constant",
+        "value" : [ "year", "month", "tenantId", "userId", "productVersion", "threadNumber", "actionType", "rawMessage" ]
+      },
+      "sortColumns" : {
+        "type" : "constant",
+        "value" : [ "year", "month", "tenantId", "userId", "productVersion", "threadNumber", "actionType", "rawMessage" ]
+      },
+      "selectedRow" : {
+        "type" : "variable",
+        "value" : ""
+      },
+      "pageSize" : {
+        "type" : "constant",
+        "value" : 10
+      },
+      "filter" : {
+        "type" : "constant"
+      }
+    },
+    "reference" : "22c24257-8754-4569-8ceb-ba292d9baf66",
+    "id" : "pbDataTable"
+  } ] ],
+  "assets" : [ {
+    "id" : "3d353947-3c12-4839-9be2-f9c1dc200ae3",
+    "name" : "localization.json",
+    "type" : "json",
+    "order" : 0,
+    "external" : false
+  }, {
+    "id" : "e0bc4d1a-7472-4fcd-9281-1aefd03e9208",
+    "name" : "style.css",
+    "type" : "css",
+    "order" : 0,
+    "external" : false
+  } ],
+  "inactiveAssets" : [ ],
+  "data" : { },
+  "uuid" : "c2974377-875d-48df-87d2-c68afa748faf",
+  "type" : "page"
+}

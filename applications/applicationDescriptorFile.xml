@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<applications xmlns="http://documentation.bonitasoft.com/application-xml-schema/1.0">
+    <application token="audit" version="1.0" profile="Administrator" state="ACTIVATED" layout="custompage_defaultlayout" theme="custompage_superherotheme">
+        <displayName>Audit Trail</displayName>
+        <description>An audit trail of all actions performed on the server.</description>
+        <applicationPages/>
+        <applicationMenus/>
+    </application>
+</applications>
