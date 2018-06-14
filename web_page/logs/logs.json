@@ -2,8 +2,144 @@
   "designerVersion" : "1.7.49",
   "id" : "logs",
   "name" : "logs",
-  "lastUpdate" : 1528981034053,
+  "lastUpdate" : 1528984474521,
   "rows" : [ [ {
+    "type" : "component",
+    "dimension" : {
+      "xs" : 12,
+      "sm" : 12,
+      "md" : 3,
+      "lg" : 6
+    },
+    "propertyValues" : {
+      "cssClasses" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "hidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "required" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "minLength" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "maxLength" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "readOnly" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "labelHidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "label" : {
+        "type" : "interpolation",
+        "value" : ""
+      },
+      "labelPosition" : {
+        "type" : "constant",
+        "value" : "top"
+      },
+      "labelWidth" : {
+        "type" : "constant",
+        "value" : 4
+      },
+      "placeholder" : {
+        "type" : "interpolation",
+        "value" : "search..."
+      },
+      "value" : {
+        "type" : "variable",
+        "value" : "searchTerm.term"
+      },
+      "type" : {
+        "type" : "constant",
+        "value" : "text"
+      },
+      "min" : {
+        "type" : "constant"
+      },
+      "max" : {
+        "type" : "constant"
+      },
+      "step" : {
+        "type" : "constant",
+        "value" : 1
+      }
+    },
+    "reference" : "aacb557e-5ce4-4158-8853-e8ea5af5f561",
+    "id" : "pbInput"
+  }, {
+    "type" : "component",
+    "dimension" : {
+      "xs" : 12,
+      "sm" : 12,
+      "md" : 9,
+      "lg" : 6
+    },
+    "propertyValues" : {
+      "cssClasses" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "hidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "disabled" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "required" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "labelHidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "label" : {
+        "type" : "interpolation",
+        "value" : ""
+      },
+      "labelPosition" : {
+        "type" : "constant",
+        "value" : "top"
+      },
+      "labelWidth" : {
+        "type" : "constant",
+        "value" : 4
+      },
+      "placeholder" : {
+        "type" : "interpolation",
+        "value" : "Select an action type"
+      },
+      "availableValues" : {
+        "type" : "expression",
+        "value" : "actionTypes"
+      },
+      "displayedKey" : {
+        "type" : "constant"
+      },
+      "returnedKey" : {
+        "type" : "constant"
+      },
+      "value" : {
+        "type" : "variable",
+        "value" : "searchTerm.actionType"
+      }
+    },
+    "reference" : "c4ffd208-eb41-4a38-96cd-621967ae7a46",
+    "id" : "pbSelect"
+  } ], [ {
     "type" : "component",
     "dimension" : {
       "xs" : 12,
@@ -26,7 +162,7 @@
       },
       "type" : {
         "type" : "constant",
-        "value" : "Bonita API"
+        "value" : "Variable"
       },
       "apiUrl" : {
         "type" : "constant",
@@ -36,7 +172,8 @@
         "type" : "constant"
       },
       "content" : {
-        "type" : "constant"
+        "type" : "expression",
+        "value" : "filteredLogs | filter: searchTerm.term"
       },
       "columnsKey" : {
         "type" : "constant",
@@ -75,7 +212,28 @@
     "external" : false
   } ],
   "inactiveAssets" : [ ],
-  "data" : { },
+  "data" : {
+    "logs" : {
+      "type" : "url",
+      "value" : "../API/extension/logs?p=0&c=9999",
+      "exposed" : false
+    },
+    "searchTerm" : {
+      "type" : "json",
+      "value" : "{\"actionType\":\"All\"}",
+      "exposed" : false
+    },
+    "filteredLogs" : {
+      "type" : "expression",
+      "value" : "return $data.logs.filter(l => l.userId!=\"system\").filter(l => $data.searchTerm.actionType==\"All\" || $data.searchTerm.actionType==l.actionType)",
+      "exposed" : false
+    },
+    "actionTypes" : {
+      "type" : "expression",
+      "value" : "var reducer = (acc,l) => {\n    if(acc.indexOf(l.actionType)<0) {\n        acc.push(l.actionType);\n        console.log(\"Adding action type\", l.actionType)\n    }\n    console.log(\"Accumulation:\", acc)\n    return acc;\n}\nreturn $data.logs.reduce(reducer,[\"All\"]);",
+      "exposed" : false
+    }
+  },
   "uuid" : "c2974377-875d-48df-87d2-c68afa748faf",
   "type" : "page"
 }
